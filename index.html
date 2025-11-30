@@ -386,7 +386,7 @@
 
 
 // ==========================================
-        //  渲染邏輯 (修正版：手機 75% + 4:3 比例)
+        //  渲染邏輯 (修正版：手機 60% 寬度)
         // ==========================================
 
         function renderOngoingProjects() {
@@ -395,7 +395,7 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="min-w-[75%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="min-w-[60%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
                     <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden rounded-t-sm pointer-events-none">
@@ -429,7 +429,7 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="min-w-[75%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="min-w-[60%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
                     <div class="overflow-hidden mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
@@ -552,6 +552,6 @@
             renderOngoingProjects();
             renderCompletedProjects();
         });
-    </script>
+    </script>    
     </body>
 </html>
