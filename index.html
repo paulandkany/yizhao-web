@@ -405,20 +405,22 @@
         ];
 
 
-        // ==========================================
-        //  渲染邏輯 (修正版：改用 4:3 比例)
+// ==========================================
+        //  渲染邏輯 (修正版：自然比例，不裁切)
         // ==========================================
 
-// 1. 渲染施工中專案 (Ongoing) - [修正版]
-function renderOngoingProjects() {
+        function renderOngoingProjects() {
             const container = document.getElementById('ongoing-slider');
             if (!container) return;
+            // 這裡使用了 items-start 讓卡片靠上對齊，以適應不同高度
+            container.classList.add('items-start'); 
+            
             container.innerHTML = ongoingData.map(item => `
                 <div class="min-w-[85%] md:min-w-[40%] lg:min-w-[28%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
-                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-64 overflow-hidden rounded-t-sm pointer-events-none">
-                        <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
+                    <div class="relative w-full rounded-t-sm overflow-hidden pointer-events-none">
+                        <img src="${item.cover}" alt="${item.project}" class="w-full h-auto block transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-sm shadow-sm flex items-center gap-1">
                             <i class="fa-solid fa-person-digging"></i> 施工中
@@ -442,15 +444,16 @@ function renderOngoingProjects() {
             `).join('');
         }
 
-        // 2. 渲染完工實績 (Projects) - [修正版]
         function renderCompletedProjects() {
              const slider = document.getElementById('projects-slider');
              if (!slider) return;
+             slider.classList.add('items-start'); // 讓卡片靠上對齊
+
              slider.innerHTML = projectData.map(item => `
                 <div class="min-w-[85%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
-                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden mb-4 rounded-sm shadow-md pointer-events-none">
-                        <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
+                    <div class="relative w-full rounded-sm overflow-hidden shadow-md mb-4 pointer-events-none">
+                        <img src="${item.cover}" alt="${item.title}" class="w-full h-auto block transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/40 transition duration-500 hidden md:flex items-center justify-center">
                             <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
@@ -463,7 +466,7 @@ function renderOngoingProjects() {
                 </div>
              `).join('');
         }
-        
+
         // ==========================================
         //  滑動邏輯 (Slider Drag)
         // ==========================================
