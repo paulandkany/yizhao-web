@@ -386,7 +386,7 @@
 
 
 // ==========================================
-        //  渲染邏輯 (測試版：手機 30% 寬度)
+        //  渲染邏輯 (強制縮小版：w-[32vw])
         // ==========================================
 
         function renderOngoingProjects() {
@@ -395,16 +395,16 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="min-w-[30%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="w-[32vw] md:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
                     <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden rounded-t-sm pointer-events-none">
                         <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
-                        <div class="absolute top-2 left-2 bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded-sm shadow-sm flex items-center gap-1">
+                        <div class="absolute top-1 left-1 bg-red-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm flex items-center gap-1">
                             <i class="fa-solid fa-person-digging"></i> 施工中
                         </div>
-                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-[8px] px-2 py-0.5 backdrop-blur-sm font-eng">
+                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-[8px] px-1.5 py-0.5 backdrop-blur-sm font-eng">
                             ${item.date}
                         </div>
                         
@@ -413,10 +413,10 @@
                         </div>
                     </div>
                     <div class="p-3 pointer-events-none">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[8px] font-bold text-gray-400 font-eng tracking-wider truncate"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-[9px] font-bold text-gray-400 font-eng tracking-wider truncate"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
                         </div>
-                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate">${item.project}</h3>
+                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate leading-tight">${item.project}</h3>
                     </div>
                 </div>
             `).join('');
@@ -428,7 +428,7 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="min-w-[30%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="w-[32vw] md:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
                     <div class="overflow-hidden mb-2 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
@@ -437,9 +437,9 @@
                             <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
-                    <div class="flex flex-col pl-2 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
+                    <div class="flex flex-col pl-1 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
                         <span class="text-[8px] text-jp-blue font-bold tracking-wider mb-0.5">${item.type}</span>
-                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate">${item.title}</h3>
+                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate leading-tight">${item.title}</h3>
                     </div>
                 </div>
              `).join('');
@@ -551,6 +551,6 @@
             renderOngoingProjects();
             renderCompletedProjects();
         });
-    </script>   
+    </script>
     </body>
 </html>
