@@ -386,7 +386,7 @@
 
 
 // ==========================================
-        //  渲染邏輯 (修正版：手機 60% 寬度)
+        //  渲染邏輯 (測試版：手機 30% 寬度)
         // ==========================================
 
         function renderOngoingProjects() {
@@ -395,16 +395,16 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="min-w-[60%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="min-w-[30%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
                     <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden rounded-t-sm pointer-events-none">
                         <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-sm shadow-sm flex items-center gap-1">
+                        <div class="absolute top-2 left-2 bg-red-600 text-white text-[8px] font-bold px-2 py-0.5 rounded-sm shadow-sm flex items-center gap-1">
                             <i class="fa-solid fa-person-digging"></i> 施工中
                         </div>
-                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1 backdrop-blur-sm font-eng">
+                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-[8px] px-2 py-0.5 backdrop-blur-sm font-eng">
                             ${item.date}
                         </div>
                         
@@ -412,12 +412,11 @@
                              <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
-                    <div class="p-6 pointer-events-none">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-gray-400 font-eng tracking-wider"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
-                            <span class="${item.tagColor} text-white text-[10px] px-2 py-0.5 rounded-sm font-bold tracking-wider">${item.stage}</span>
+                    <div class="p-3 pointer-events-none">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[8px] font-bold text-gray-400 font-eng tracking-wider truncate"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 group-hover:text-jp-blue transition">${item.project}</h3>
+                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate">${item.project}</h3>
                     </div>
                 </div>
             `).join('');
@@ -429,18 +428,18 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="min-w-[60%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="min-w-[30%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
-                    <div class="overflow-hidden mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
+                    <div class="overflow-hidden mb-2 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/40 transition duration-500 hidden md:flex items-center justify-center">
                             <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
-                    <div class="flex flex-col pl-4 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
-                        <span class="text-xs text-jp-blue font-bold tracking-wider mb-1">${item.type}</span>
-                        <h3 class="text-lg font-bold text-gray-800 group-hover:text-jp-blue transition">${item.title}</h3>
+                    <div class="flex flex-col pl-2 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
+                        <span class="text-[8px] text-jp-blue font-bold tracking-wider mb-0.5">${item.type}</span>
+                        <h3 class="text-xs font-bold text-gray-800 group-hover:text-jp-blue transition truncate">${item.title}</h3>
                     </div>
                 </div>
              `).join('');
@@ -552,6 +551,6 @@
             renderOngoingProjects();
             renderCompletedProjects();
         });
-    </script>    
+    </script>   
     </body>
 </html>
