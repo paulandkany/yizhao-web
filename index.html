@@ -386,7 +386,7 @@
 
 
 // ==========================================
-        //  渲染邏輯 (強制鎖定圖1效果)
+        //  渲染邏輯 (修正：使用 16:9 比例，避免放大裁切)
         // ==========================================
 
         function renderOngoingProjects() {
@@ -395,10 +395,10 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="min-w-[85%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="min-w-[75%] md:min-w-[40%] lg:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
-                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden rounded-t-sm pointer-events-none">
+                    <div class="relative w-full aspect-video md:aspect-auto md:h-64 overflow-hidden rounded-t-sm pointer-events-none">
                         <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-sm shadow-sm flex items-center gap-1">
@@ -429,9 +429,9 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="min-w-[85%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="min-w-[75%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
-                    <div class="overflow-hidden mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
+                    <div class="overflow-hidden mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-video md:aspect-auto md:h-72">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/40 transition duration-500 hidden md:flex items-center justify-center">
