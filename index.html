@@ -344,7 +344,8 @@
                 cover: 'images/onsite3/o3-1.jpg', 
                 tagColor: 'bg-green-600',
                 gallery: [
-                    'images/onsite3/o3-1.jpg',
+                    'images/onsite3/o2-1.jpg',
+                    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
                 ]
             },
         ];
@@ -359,7 +360,12 @@
                 gallery: [
     'images/p1/p1-1.jpg',      // 照片
     'images/p1/p1-2.jpg',      // 照片
-    'https://youtu.be/owcDvDtcKk4',      // 照片
+    'images/p1/p1-3.jpg',      // 照片
+    'images/p1/p1-4.jpg',      // 照片
+    'images/p1/p1-5.jpg',      // 照片
+    'images/p1/p1-6.jpg',      // 照片
+    'images/p1/p1-7.jpg',      // 照片
+    'images/p1/MOMOvedio.mp4',      // 照片
 ]          
 },
             { 
@@ -382,26 +388,47 @@
     'images/p3/p3-2.jpg',      // 照片
 ]          
             },
+            { 
+                id: 'project4',
+                title: '南屯企業總部大樓', 
+                type: 'OFFICE',
+                cover: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            },
+            { 
+                id: 'project5',
+                title: '台中港倉儲擴建工程', 
+                type: 'PUBLIC',
+                cover: 'https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            }
         ];
 
 
         // ==========================================
-        //  渲染與邏輯控制 (Render Logic)
+        //  渲染邏輯 (修正版：改用 4:3 比例)
         // ==========================================
 
-        // 1. 渲染施工中專案 (Ongoing)
-        function renderOngoingProjects() {
+// 1. 渲染施工中專案 (Ongoing) - [修正版]
+function renderOngoingProjects() {
             const container = document.getElementById('ongoing-slider');
             if (!container) return;
             container.innerHTML = ongoingData.map(item => `
                 <div class="min-w-[85%] md:min-w-[40%] lg:min-w-[28%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
-                    <div class="relative h-56 overflow-hidden rounded-t-sm pointer-events-none">
+                    
+                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-64 overflow-hidden rounded-t-sm pointer-events-none">
                         <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-sm shadow-sm flex items-center gap-1"><i class="fa-solid fa-person-digging"></i> 施工中</div>
-                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1 backdrop-blur-sm font-eng">${item.date}</div>
-                        <div class="absolute inset-0 bg-jp-blue/0 group-hover:bg-jp-blue/20 transition duration-500 flex items-center justify-center">
-                             <i class="fa-solid fa-images text-white text-3xl opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0"></i>
+                        
+                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-sm shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-person-digging"></i> 施工中
+                        </div>
+                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1 backdrop-blur-sm font-eng">
+                            ${item.date}
+                        </div>
+                        
+                        <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/20 transition duration-500 hidden md:flex items-center justify-center">
+                             <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
                     <div class="p-6 pointer-events-none">
@@ -415,16 +442,18 @@
             `).join('');
         }
 
-        // 2. 渲染完工實績 (Projects)
+        // 2. 渲染完工實績 (Projects) - [修正版]
         function renderCompletedProjects() {
              const slider = document.getElementById('projects-slider');
              if (!slider) return;
              slider.innerHTML = projectData.map(item => `
                 <div class="min-w-[85%] md:min-w-[45%] lg:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
-                    <div class="overflow-hidden mb-4 relative rounded-sm shadow-md pointer-events-none">
-                        <img src="${item.cover}" alt="${item.title}" class="w-full h-72 object-cover transform transition duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-jp-blue/0 group-hover:bg-jp-blue/40 transition duration-500 flex items-center justify-center">
-                            <i class="fa-solid fa-images text-white text-3xl opacity-0 group-hover:opacity-100 transition transform translate-y-4 group-hover:translate-y-0"></i>
+                    
+                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden mb-4 rounded-sm shadow-md pointer-events-none">
+                        <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
+                        
+                        <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/40 transition duration-500 hidden md:flex items-center justify-center">
+                            <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
                     <div class="flex flex-col pl-4 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
@@ -434,21 +463,17 @@
                 </div>
              `).join('');
         }
-
+        
         // ==========================================
-        //  滑動邏輯 (Slider Drag Logic)
+        //  滑動邏輯 (Slider Drag)
         // ==========================================
         
-        // 1. 施工中 (Ongoing) 滑動
+        // Ongoing Slider
         const ongoingSlider = document.getElementById('ongoing-slider');
-        let isOngoingDown = false;
-        let startOngoingX;
-        let scrollOngoingLeft;
-        let isOngoingDragging = false; 
+        let isOngoingDown = false, startOngoingX, scrollOngoingLeft, isOngoingDragging = false; 
 
         function startOngoingDragging(e) {
-            isOngoingDown = true;
-            isOngoingDragging = false;
+            isOngoingDown = true; isOngoingDragging = false;
             startOngoingX = e.pageX - ongoingSlider.offsetLeft;
             scrollOngoingLeft = ongoingSlider.scrollLeft;
         }
@@ -458,8 +483,7 @@
         }
         function ongoingDrag(e) {
             if (!isOngoingDown) return;
-            e.preventDefault();
-            isOngoingDragging = true;
+            e.preventDefault(); isOngoingDragging = true;
             const x = e.pageX - ongoingSlider.offsetLeft;
             const walk = (x - startOngoingX) * 2;
             ongoingSlider.scrollLeft = scrollOngoingLeft - walk;
@@ -470,16 +494,12 @@
             else ongoingSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
-        // 2. 完工實績 (Projects) 滑動
+        // Project Slider
         const projectSlider = document.getElementById('projects-slider');
-        let isProjectDown = false;
-        let startProjectX;
-        let scrollProjectLeft;
-        let isProjectDragging = false; 
+        let isProjectDown = false, startProjectX, scrollProjectLeft, isProjectDragging = false; 
 
         function startDragging(e) {
-            isProjectDown = true;
-            isProjectDragging = false;
+            isProjectDown = true; isProjectDragging = false;
             startProjectX = e.pageX - projectSlider.offsetLeft;
             scrollProjectLeft = projectSlider.scrollLeft;
         }
@@ -489,8 +509,7 @@
         }
         function drag(e) {
             if (!isProjectDown) return;
-            e.preventDefault();
-            isProjectDragging = true;
+            e.preventDefault(); isProjectDragging = true;
             const x = e.pageX - projectSlider.offsetLeft;
             const walk = (x - startProjectX) * 2;
             projectSlider.scrollLeft = scrollProjectLeft - walk;
@@ -501,9 +520,8 @@
             else projectSlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
-
         // ==========================================
-        //  燈箱邏輯 (Lightbox) - 支援圖片與影片(.mp4)
+        //  燈箱邏輯 (Lightbox) - 支援 YouTube & MP4
         // ==========================================
         
         function openLightbox(id) {
@@ -511,60 +529,27 @@
             const data = projectData.find(p => p.id === id);
             openGalleryModal(data);
         }
-
         function openOngoingLightbox(id) {
             if (isOngoingDragging) return;
             const data = ongoingData.find(p => p.id === id);
             openGalleryModal(data);
         }
 
-// 共用的開啟 Modal 函數 (支援圖片、MP4、YouTube)
-function openGalleryModal(data) {
+        function openGalleryModal(data) {
             if (!data) return;
             const modal = document.getElementById('lightbox-modal');
-            
             document.getElementById('lightbox-title').textContent = data.title || data.project;
             
             document.getElementById('lightbox-content').innerHTML = '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">' + 
                 data.gallery.map(src => {
                     const lowerSrc = src.toLowerCase();
-
-                    // 1. 判斷是否為 YouTube 影片
                     if (src.includes('youtube.com') || src.includes('youtu.be')) {
-                        // 自動抓取 YouTube ID
-                        let videoId = '';
-                        if (src.includes('youtu.be')) {
-                            videoId = src.split('/').pop();
-                        } else {
-                            const urlParams = new URLSearchParams(new URL(src).search);
-                            videoId = urlParams.get('v');
-                        }
-                        return `
-                        <div class="rounded-sm overflow-hidden shadow-md bg-black aspect-video relative">
-                            <iframe class="absolute inset-0 w-full h-full" 
-                                    src="https://www.youtube.com/embed/${videoId}" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen>
-                            </iframe>
-                        </div>`;
-                    } 
-                    // 2. 判斷是否為 MP4 檔案 (小影片用)
-                    else if (lowerSrc.endsWith('.mp4')) {
-                        return `
-                        <div class="rounded-sm overflow-hidden shadow-md bg-black">
-                            <video controls class="w-full h-auto">
-                                <source src="${src}" type="video/mp4">
-                                您的瀏覽器不支援影片播放。
-                            </video>
-                        </div>`;
-                    } 
-                    // 3. 其他都當作圖片
-                    else {
-                        return `
-                        <div class="rounded-sm overflow-hidden shadow-md">
-                            <img src="${src}" class="w-full h-auto object-cover hover:scale-105 transition duration-700">
-                        </div>`;
+                        let videoId = src.includes('youtu.be') ? src.split('/').pop() : new URLSearchParams(new URL(src).search).get('v');
+                        return `<div class="rounded-sm overflow-hidden shadow-md bg-black aspect-video relative"><iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`;
+                    } else if (lowerSrc.endsWith('.mp4')) {
+                        return `<div class="rounded-sm overflow-hidden shadow-md bg-black"><video controls class="w-full h-auto"><source src="${src}" type="video/mp4"></video></div>`;
+                    } else {
+                        return `<div class="rounded-sm overflow-hidden shadow-md"><img src="${src}" class="w-full h-auto object-cover hover:scale-105 transition duration-700"></div>`;
                     }
                 }).join('') + '</div>';
 
@@ -579,14 +564,12 @@ function openGalleryModal(data) {
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
         }
-
         document.getElementById('lightbox-modal').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
 
-        // 初始化
         window.addEventListener('DOMContentLoaded', () => {
             renderOngoingProjects();
             renderCompletedProjects();
         });
     </script>
-</body>
+    </body>
 </html>
