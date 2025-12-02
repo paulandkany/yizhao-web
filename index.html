@@ -311,7 +311,7 @@
 
 
         // ==========================================
-        //  渲染邏輯 (修正版：手機 32vw / 電腦 350px)
+        //  渲染邏輯 (嚴格鎖定寬度版)
         // ==========================================
 
         function renderOngoingProjects() {
@@ -320,7 +320,7 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="min-w-[32vw] lg:min-w-[350px] lg:w-[350px] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="w-[32vw] lg:w-[350px] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
                     <div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-sm pointer-events-none">
@@ -354,7 +354,7 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="min-w-[32vw] lg:min-w-[350px] lg:w-[350px] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="w-[32vw] lg:w-[350px] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
                     <div class="overflow-hidden mb-2 lg:mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3]">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
@@ -419,5 +419,5 @@
 
         window.addEventListener('DOMContentLoaded', () => { renderOngoingProjects(); renderCompletedProjects(); });
     </script>
-</body>
+    </body>
 </html>
