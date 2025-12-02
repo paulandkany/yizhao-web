@@ -217,23 +217,101 @@
         //  資料庫設定
         // ==========================================
         
+        // 1. 施工現場 (Ongoing)
         const ongoingData = [
-            { id: 'ongoing1', location: '台中市南屯區', project: '文心路商辦大樓新建', stage: '結構體工程', date: '2025.11.28', cover: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', tagColor: 'bg-blue-600', gallery: ['https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1581094794329-cd6753354424?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'ongoing2', location: '彰化縣和美鎮', project: '傳產加工廠房擴建', stage: 'H型鋼吊裝', date: '2025.11.25', cover: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', tagColor: 'bg-orange-500', gallery: ['https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'ongoing3', location: '台中市北屯區', project: '私人住宅自地自建', stage: '基礎開挖', date: '2025.11.20', cover: 'https://images.unsplash.com/photo-1590082695277-28564177d337?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', tagColor: 'bg-green-600', gallery: ['https://images.unsplash.com/photo-1590082695277-28564177d337?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'ongoing4', location: '台中市大里區', project: '林公館透天新建工程', stage: '2F 樓板灌漿', date: '2025.11.15', cover: 'https://images.unsplash.com/photo-1535129102059-c2938482684f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', tagColor: 'bg-blue-600', gallery: ['https://images.unsplash.com/photo-1535129102059-c2938482684f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] }
+            { 
+                id: 'ongoing1', 
+                location: '台中市南屯區', 
+                project: '文心路商辦大樓新建', 
+                stage: '結構體工程', 
+                date: '2025.11.28', 
+                cover: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 
+                tagColor: 'bg-blue-600',
+                gallery: [
+                    'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1581094794329-cd6753354424?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+                ]
+            },
+            { 
+                id: 'ongoing2',
+                location: '彰化縣和美鎮', 
+                project: '傳產加工廠房擴建', 
+                stage: 'H型鋼吊裝', 
+                date: '2025.11.25', 
+                cover: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 
+                tagColor: 'bg-orange-500',
+                gallery: [
+                    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+                ]
+            },
+            { 
+                id: 'ongoing3',
+                location: '台中市北屯區', 
+                project: '私人住宅自地自建', 
+                stage: '基礎開挖', 
+                date: '2025.11.20', 
+                cover: 'https://images.unsplash.com/photo-1590082695277-28564177d337?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 
+                tagColor: 'bg-green-600',
+                gallery: [
+                    'https://images.unsplash.com/photo-1590082695277-28564177d337?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+                ]
+            },
+            { 
+                id: 'ongoing4',
+                location: '台中市大里區', 
+                project: '林公館透天新建工程', 
+                stage: '2F 樓板灌漿', 
+                date: '2025.11.15', 
+                cover: 'https://images.unsplash.com/photo-1535129102059-c2938482684f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', 
+                tagColor: 'bg-blue-600',
+                gallery: [
+                    'https://images.unsplash.com/photo-1535129102059-c2938482684f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+                ]
+            }
         ];
 
+        // 2. 完工實績 (Projects)
         const projectData = [
-            { id: 'project1', title: '北屯區祥順路住宅新建', type: 'RESIDENTIAL', cover: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', gallery: ['https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'project2', title: '精密機械園區鋼構廠辦', type: 'FACTORY', cover: 'https://images.unsplash.com/photo-1565034946487-077786996e27?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', gallery: ['https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'project3', title: '西屯區集合住宅重建案', type: 'RENOVATION', cover: 'https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', gallery: ['https://images.unsplash.com/photo-1613553507747-9f500540605c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'project4', title: '南屯企業總部大樓', type: 'OFFICE', cover: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', gallery: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] },
-            { id: 'project5', title: '台中港倉儲擴建工程', type: 'PUBLIC', cover: 'https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80', gallery: ['https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] }
+            { 
+                id: 'project1',
+                title: '北屯區祥順路住宅新建', 
+                type: 'RESIDENTIAL',
+                cover: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            },
+            { 
+                id: 'project2',
+                title: '精密機械園區鋼構廠辦', 
+                type: 'FACTORY',
+                cover: 'https://images.unsplash.com/photo-1565034946487-077786996e27?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            },
+            { 
+                id: 'project3',
+                title: '西屯區集合住宅重建案', 
+                type: 'RENOVATION',
+                cover: 'https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1613553507747-9f500540605c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            },
+            { 
+                id: 'project4',
+                title: '南屯企業總部大樓', 
+                type: 'OFFICE',
+                cover: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            },
+            { 
+                id: 'project5',
+                title: '台中港倉儲擴建工程', 
+                type: 'PUBLIC',
+                cover: 'https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                gallery: ['https://images.unsplash.com/photo-1590345615377-17d47225c567?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'] 
+            }
         ];
+
 
         // ==========================================
-        //  渲染邏輯 (強制 w-[32vw] 嚴格寬度)
+        //  渲染邏輯 (修正版：手機 32vw / 電腦 350px)
         // ==========================================
 
         function renderOngoingProjects() {
@@ -242,16 +320,16 @@
             container.classList.remove('items-start'); 
             
             container.innerHTML = ongoingData.map(item => `
-                <div class="w-[32vw] md:min-w-[30%] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
+                <div class="min-w-[32vw] lg:min-w-[350px] lg:w-[350px] flex-shrink-0 bg-white rounded-sm shadow-sm hover:shadow-md transition duration-300 border border-gray-100 group cursor-pointer"
                      onclick="openOngoingLightbox('${item.id}')">
                     
-                    <div class="relative w-full aspect-[4/3] md:aspect-auto md:h-72 overflow-hidden rounded-t-sm pointer-events-none">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-sm pointer-events-none">
                         <img src="${item.cover}" alt="${item.project}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
-                        <div class="absolute top-1 left-1 md:top-4 md:left-4 bg-red-600 text-white text-[9px] md:text-xs font-bold px-1.5 py-0.5 md:px-3 md:py-1 rounded-sm shadow-sm flex items-center gap-1">
-                            <i class="fa-solid fa-person-digging"></i> <span class="hidden md:inline">施工中</span><span class="md:hidden">施工</span>
+                        <div class="absolute top-1 left-1 lg:top-4 lg:left-4 bg-red-600 text-white text-[8px] lg:text-xs font-bold px-1.5 py-0.5 lg:px-3 lg:py-1 rounded-sm shadow-sm flex items-center gap-1">
+                            <i class="fa-solid fa-person-digging"></i> <span class="hidden lg:inline">施工中</span><span class="lg:hidden">施工</span>
                         </div>
-                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-[9px] md:text-xs px-1.5 py-0.5 md:px-3 md:py-1 backdrop-blur-sm font-eng">
+                        <div class="absolute bottom-0 right-0 bg-black/60 text-white text-[8px] lg:text-xs px-1.5 py-0.5 lg:px-3 lg:py-1 backdrop-blur-sm font-eng">
                             ${item.date}
                         </div>
                         
@@ -259,12 +337,12 @@
                              <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
-                    <div class="p-2 md:p-6 pointer-events-none">
-                        <div class="flex items-center justify-between mb-1 md:mb-3">
-                            <span class="text-[9px] md:text-xs font-bold text-gray-400 font-eng tracking-wider truncate"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
-                            <span class="${item.tagColor} text-white text-[9px] md:text-[10px] px-1 py-0.5 md:px-2 md:py-0.5 rounded-sm font-bold tracking-wider hidden md:inline-block">${item.stage}</span>
+                    <div class="p-2 lg:p-6 pointer-events-none">
+                        <div class="flex items-center justify-between mb-1 lg:mb-3">
+                            <span class="text-[9px] lg:text-xs font-bold text-gray-400 font-eng tracking-wider truncate"><i class="fa-solid fa-location-dot mr-1"></i> ${item.location}</span>
+                            <span class="${item.tagColor} text-white text-[9px] lg:text-[10px] px-1 py-0.5 lg:px-2 lg:py-0.5 rounded-sm font-bold tracking-wider hidden lg:inline-block">${item.stage}</span>
                         </div>
-                        <h3 class="text-xs md:text-lg font-bold text-gray-800 group-hover:text-jp-blue transition leading-tight line-clamp-2 md:line-clamp-none">${item.project}</h3>
+                        <h3 class="text-xs lg:text-lg font-bold text-gray-800 group-hover:text-jp-blue transition truncate leading-tight">${item.project}</h3>
                     </div>
                 </div>
             `).join('');
@@ -276,32 +354,31 @@
              slider.classList.remove('items-start');
 
              slider.innerHTML = projectData.map(item => `
-                <div class="w-[32vw] md:min-w-[30%] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
+                <div class="min-w-[32vw] lg:min-w-[350px] lg:w-[350px] flex-shrink-0 group cursor-pointer" onclick="openLightbox('${item.id}')">
                     
-                    <div class="overflow-hidden mb-2 md:mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3] md:aspect-auto md:h-72">
+                    <div class="overflow-hidden mb-2 lg:mb-4 relative rounded-sm shadow-md pointer-events-none w-full aspect-[4/3]">
                         <img src="${item.cover}" alt="${item.title}" class="w-full h-full object-cover transform transition duration-700 group-hover:scale-105">
                         
                         <div class="absolute inset-0 bg-jp-blue/0 md:group-hover:bg-jp-blue/40 transition duration-500 hidden md:flex items-center justify-center">
                             <i class="fa-solid fa-images text-white text-3xl opacity-0 md:group-hover:opacity-100 transition transform translate-y-4 md:group-hover:translate-y-0"></i>
                         </div>
                     </div>
-                    <div class="flex flex-col pl-2 md:pl-4 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
-                        <span class="text-[9px] md:text-xs text-jp-blue font-bold tracking-wider mb-0.5 md:mb-1">${item.type}</span>
-                        <h3 class="text-xs md:text-lg font-bold text-gray-800 group-hover:text-jp-blue transition leading-tight line-clamp-2 md:line-clamp-none">${item.title}</h3>
+                    <div class="flex flex-col pl-1 lg:pl-4 border-l-2 border-gray-200 group-hover:border-jp-blue transition duration-300 pointer-events-none">
+                        <span class="text-[8px] lg:text-xs text-jp-blue font-bold tracking-wider mb-0.5 lg:mb-1">${item.type}</span>
+                        <h3 class="text-xs lg:text-lg font-bold text-gray-800 group-hover:text-jp-blue transition truncate leading-tight">${item.title}</h3>
                     </div>
                 </div>
              `).join('');
         }
 
         // ==========================================
-        //  滑動與燈箱邏輯 (合併優化版)
+        //  滑動邏輯 (Slider Drag)
         // ==========================================
         
         const ongoingSlider = document.getElementById('ongoing-slider');
         const projectSlider = document.getElementById('projects-slider');
         let isDown = false, startX, scrollLeft, isDragging = false; 
 
-        // 通用滑動監聽
         [ongoingSlider, projectSlider].forEach(slider => {
             if(!slider) return;
             slider.addEventListener('mousedown', (e) => { isDown = true; isDragging = false; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
@@ -313,7 +390,10 @@
         function scrollOngoing(dir) { const slider = document.getElementById('ongoing-slider'); const amt = 350; slider.scrollBy({ left: dir === 'left' ? -amt : amt, behavior: 'smooth' }); }
         function scrollProjects(dir) { const slider = document.getElementById('projects-slider'); const amt = 400; slider.scrollBy({ left: dir === 'left' ? -amt : amt, behavior: 'smooth' }); }
 
-        // Lightbox Functions
+        // ==========================================
+        //  燈箱邏輯
+        // ==========================================
+        
         function openLightbox(id) { if(isDragging) return; const data = projectData.find(p => p.id === id); openGalleryModal(data); }
         function openOngoingLightbox(id) { if(isDragging) return; const data = ongoingData.find(p => p.id === id); openGalleryModal(data); }
         
